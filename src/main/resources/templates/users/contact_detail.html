@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="users/base::layout(~{::section})"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>add contact</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+  <section>
+	<div class="card mr-3 ml-3" th:if="${contact}">
+	<div class="card-body">
+	<div class="container text-center">
+	<img style="height:200px; width:200px;" th:src="@{'/img/'+${contact.image}}" alt="profile photo" />
+	<h3 class="mt-3"> <span th:text="${contact.name}+' '+${contact.secondName}"></span></h3>
+	<hr></hr>
+	<table class="table">
+   <tbody>
+    <tr>
+      <th scope="col">#ID</th>
+      <th th:text="'SCM '+${contact.cId}"></th>
+      </tr>
+    <tr>
+    <tr>
+      <th scope="col">Email</th>
+       <td th:text="${contact.email}"></td>
+    </tr>
+    <tr>
+      <th scope="col">Phone</th>
+      <td th:text="${contact.phone}"></td>
+    </tr>
+    <tr>
+      <th scope="col">Work</th>
+      <td th:text="${contact.work}"></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="description">
+<th:block th:utext="${contact.description}"></th:block>
+</div>
+
+<div class="container">
+<a class="btn btn-primary btn-sm">Update</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a class="btn btn-danger btn-sm">Delete</a>
+</div>
+	</div>
+	</div>
+	
+	</div>
+	<h1 th:unless="${contact}" class="text-center bg-danger text-white">You are not permitted to see this contact</h1>
+  </section>
+</body>
+</html>
